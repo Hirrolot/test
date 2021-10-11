@@ -1,3 +1,3 @@
 # test
 
-Long story short, it took half of a year of hard work to release v0.1.0 and almost a year to make it stable. As a real-world application of Metalang99, I created Datatype99 exactly of the same form I wanted it to be: the implementation is highly declarative, the syntax is nifty, and the semantics is well-defined.
+ - If you do **not** want the shortened versions to appear (e.g., `match` without the postfix `99`), define `DATATYPE99_NO_ALIASES` before `#include <datatype99.h>`. Library headers are strongly advised to always use the postfixed macros, but without defining `DATATYPE99_NO_ALIASES`.
