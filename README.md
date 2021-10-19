@@ -1,3 +1,3 @@
 # test
 
-The key point of Metalang99 is to reify informal software development patterns, such as tagged unions & interfaces, into utterly formal programmatic abstractions, thereby improving the overall safety, simplicity, and maintainability of your code.
+Unlike informal software development patterns, such as tagged unions or virtual method tables, the above metaprograms leverage type safety, syntax conciseness, and maintain the exact memory layout of generated code.
