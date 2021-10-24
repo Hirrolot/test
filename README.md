@@ -1,3 +1,3 @@
 # test
 
-A: VS Code automatically enables suggestions of generated types but, of course, it does not support macro syntax highlightment. The sad part is that `VCALL` and its friends break go-to definitions and do not highlight function parameters -- thus, we trade some IDE support for syntax conciseness.
+Here, `DYN(Num, State, &n)` creates `State` by initialising `.self` to `&n` and `.vptr` to the aforementioned `Num_State_impl` (also accessible as [`VTABLE(Num, State)`](#VTABLE)). Eventually, since `State` is polymorphic over its implementations (which is the essence of dynamic dispatch), you can accept `st` as a function parameter and invoke some methods on it:
