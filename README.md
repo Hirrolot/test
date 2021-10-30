@@ -1,6 +1,13 @@
 # test
 
-[ [`examples/shape.c`](examples/shape.c) ]
+<div align="center">
+<table>
+<tr>
+<td>[`examples/shape.c`](examples/shape.c)</td>
+</tr>
+<tr>
+<td>
+
 ```c
 #include <interface99.h>
 
@@ -13,10 +20,18 @@
 interface(Shape);
 ```
 
+<div align="center">
 <table>
 <tr>
- <td>Rectangle</td>
- <td>Triangle</td>
+<td>Test</td>
+</tr>
+<tr>
+<td>
+
+<table>
+<tr>
+<td>Rectangle</td>
+<td>Triangle</td>
 </tr>
 <tr>
 <td>
