@@ -20,6 +20,7 @@ interface(Shape);
 </tr>
 <tr>
 <td>
+
 ```c
 typedef struct {
     int a, b;
@@ -38,8 +39,10 @@ void Rectangle_scale(VSelf, int factor) {
 
 impl(Shape, Rectangle);
 ```
+
 </td>
 <td>
+
 ```c
 typedef struct {
     int a, b, c;
@@ -59,6 +62,7 @@ void Triangle_scale(VSelf, int factor) {
 
 impl(Shape, Triangle);
 ```
+
 </td>
 </tr>
 </table>
