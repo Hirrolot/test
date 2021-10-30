@@ -1,10 +1,12 @@
 # test
 
 <div align="center">
+
 <table>
 <tr>
-<td>[`examples/shape.c`](examples/shape.c)</td>
+<td><b>Shape</b></td>
 </tr>
+
 <tr>
 <td>
 
@@ -19,19 +21,15 @@
 
 interface(Shape);
 ```
-
-<div align="center">
-<table>
-<tr>
-<td>Test</td>
+ 
+</td>
 </tr>
-<tr>
-<td>
+</table>
 
 <table>
 <tr>
-<td>Rectangle</td>
-<td>Triangle</td>
+<td><b>Rectangle</b></td>
+<td><b>Triangle</b></td>
 </tr>
 <tr>
 <td>
@@ -82,10 +80,9 @@ impl(Shape, Triangle);
 </tr>
 </table>
 
-<div align="center">
 <table>
 <tr>
-<td>Test</td>
+<td><b>Test</b></td>
 </tr>
 <tr>
 <td>
@@ -109,4 +106,7 @@ int main(void) {
 </td>
 </tr>
 </table>
+
 </div>
+
+(Based on [`examples/shape.c`](examples/shape.c).)
