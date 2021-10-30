@@ -1,6 +1,15 @@
 # test
 
 <div align="center">
+<h1>Interface99</h1>
+<a href="https://github.com/Hirrolot/interface99/actions">
+<img src="https://github.com/Hirrolot/interface99/workflows/C/C++%20CI/badge.svg">
+</a>
+<a href="https://lists.sr.ht/~hirrolot/metalang99">
+<img src="https://img.shields.io/badge/mailing%20list-lists.sr.ht-orange">
+</a>
+
+Zero-boilerplate software interfaces inspired by Rust and Golang. Multiple inheritance, superinterfaces, and default implementations supported. No external tools required, pure C99.
 
 <table>
 <tr>
