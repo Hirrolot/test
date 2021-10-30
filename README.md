@@ -67,7 +67,11 @@ impl(Shape, Triangle);
 </tr>
 </table>
 
+<div align="center">
 <table>
+<tr>
+<td>Test</td>
+</tr>
 <tr>
 <td>
 
@@ -90,3 +94,4 @@ int main(void) {
 </td>
 </tr>
 </table>
+</div>
