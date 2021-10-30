@@ -67,7 +67,10 @@ impl(Shape, Triangle);
 </tr>
 </table>
 
-(Test)
+<table>
+<tr>
+<td>
+
 ```c
 void test(Shape shape) {
     printf("perim = %d\n", VCALL(shape, perim));
@@ -83,3 +86,7 @@ int main(void) {
     test(t);
 }
 ```
+
+</td>
+</tr>
+</table>
