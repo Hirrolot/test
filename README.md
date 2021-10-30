@@ -9,6 +9,7 @@
 
 <tr>
 <td>
+<div align="left">
 
 ```c
 #include <interface99.h>
@@ -21,7 +22,8 @@
 
 interface(Shape);
 ```
- 
+
+</div>
 </td>
 </tr>
 </table>
@@ -33,6 +35,7 @@ interface(Shape);
 </tr>
 <tr>
 <td>
+<div align="left">
 
 ```c
 typedef struct {
@@ -53,8 +56,10 @@ void Rectangle_scale(VSelf, int factor) {
 impl(Shape, Rectangle);
 ```
 
+</div>
 </td>
 <td>
+<div align="left">
 
 ```c
 typedef struct {
@@ -76,6 +81,7 @@ void Triangle_scale(VSelf, int factor) {
 impl(Shape, Triangle);
 ```
 
+</div>
 </td>
 </tr>
 </table>
@@ -86,6 +92,7 @@ impl(Shape, Triangle);
 </tr>
 <tr>
 <td>
+<div align="left">
 
 ```c
 void test(Shape shape) {
@@ -103,6 +110,7 @@ int main(void) {
 }
 ```
 
+</div>
 </td>
 </tr>
 </table>
