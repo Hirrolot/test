@@ -8,7 +8,7 @@ A: There is a lot of software written in plain C that can benefit from Datatype9
 
  - C has a stable ABI which is vital for some projects (e.g., plugin systems such as [MetaCall]).
 
- - C is a mature systems language with a complete specification and a plenitude of libraries. Rust has no specification, and [Zig] is not yet production-ready. I know a few stories when these two languages were rejected for new projects, and I can understand this decision.
+ - C is a mature systems language with a complete specification and a plenitude of libraries. Rust has no complete specification, and [Zig] is not yet production-ready. I know a few stories when these two languages were rejected for new projects, and I can understand this decision.
 
  - Historically, C has been targeting nearly all platforms. This is not the case with Rust, which depends on LLVM as for now.
 
