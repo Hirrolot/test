@@ -1,3 +1,3 @@
 # test
 
-If the variant has no parameters, this function will take `void` and `.data.dummy` will be initialised to `\0`. Otherwise, it will take the corresponding variant parameters and initialise the result value as expected.
+In either case, you can try to iteratively debug your metaprogram. From my experience, 95% of errors are comprehensible -- Metalang99 is built for humans, not for macro monsters.
