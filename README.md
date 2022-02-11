@@ -1,5 +1,6 @@
 # test
 
+
 Datatype99 consists of just one header `datatype99.h` and one dependency [Metalang99]; therefore, you need to add `datatype99` and `metalang99/include` to your include directories.
 
 [Metalang99]: https://github.com/Hirrolot/metalang99
@@ -37,7 +38,11 @@ Another approach is downloading Datatype99 as a [Git submodule]; in this case, y
 To reduce compilation times, you can try [precompiling headers] that rely on Datatype99 so that they will not be compiled each time they are included. And **PLEASE**, do not forget to specify [`-ftrack-macro-expansion=0`] (GCC), [`-fmacro-backtrace-limit=1`] (Clang), or something similar to limit macro expansion backtraces; otherwise, Datatype99 will throw your compiler to the moon.
 
 [precompiling headers]: https://en.wikipedia.org/wiki/Precompiled_header
+[`-ftrack-macro-expansion=0`]: https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html
+[`-fmacro-backtrace-limit=1`]: https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-fmacro-backtrace-limit
 
-Also, note that by default, Datatype99's `CMakeLists.txt` downloads Metalang99 [v1.13.1](https://github.com/Hirrolot/metalang99/releases/tag/v1.13.1) from the GitHub release archives; if you want to override this behaviour, you can do so by invoking [`FetchContent_Declare`] earlier.
+Note that by default, Datatype99's `CMakeLists.txt` downloads Metalang99 [v1.13.1](https://github.com/Hirrolot/metalang99/releases/tag/v1.13.1) from the GitHub release archives; if you want to override this behaviour, you can do so by invoking [`FetchContent_Declare`] earlier.
 
 [`FetchContent_Declare`]: https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_declare
+
+Happy hacking!
