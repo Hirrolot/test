@@ -30,6 +30,10 @@ elseif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
 endif()
 ```
 
+(By default, `datatype99/CMakeLists.txt` downloads Metalang99 [v1.13.1](https://github.com/Hirrolot/metalang99/releases/tag/v1.13.1) from the GitHub releases; if you want to override this behaviour, you can do so by invoking [`FetchContent_Declare`] earlier.)
+
+[`FetchContent_Declare`]: https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_declare
+
 Another approach is downloading Datatype99 as a [Git submodule]; in this case, you can use CMake's [`add_subdirectory`]. Please, avoid directly copy-pasting `datatype99.h` to your project, because it will complicate updating to new versions of Datatype99 in the future.
 
 [Git submodule]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
@@ -40,9 +44,5 @@ To reduce compilation times, you can try [precompiling headers] that rely on Dat
 [precompiling headers]: https://en.wikipedia.org/wiki/Precompiled_header
 [`-ftrack-macro-expansion=0`]: https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html
 [`-fmacro-backtrace-limit=1`]: https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-fmacro-backtrace-limit
-
-Note that by default, Datatype99's `CMakeLists.txt` downloads Metalang99 [v1.13.1](https://github.com/Hirrolot/metalang99/releases/tag/v1.13.1) from the GitHub release archives; if you want to override this behaviour, you can do so by invoking [`FetchContent_Declare`] earlier.
-
-[`FetchContent_Declare`]: https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_declare
 
 Happy hacking!
