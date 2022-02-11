@@ -1,5 +1,42 @@
 # test
 
 
-Metalang99 is a firm foundation for writing reliable and maintainable metaprograms in pure C99. It is implemented as an interpreted FP language atop of preprocessor macros: just `#include <metalang99.h>` and you are ready to go. Metalang99 features algebraic data types, pattern matching, recursion, currying, and collections; in addition, it provides means for compile-time error reporting and debugging. With our built-in syntax checker, macro errors should be perfectly comprehensible, enabling you for convenient development.
+Metalang99 is just a set of header files and nothing else; therefore, the only thing you need to tell your compiler is to add `metalang99/include` to include directories.
 
+If you use CMake, the recommended way is [`FetchContent`]:
+
+[`FetchContent`]: https://cmake.org/cmake/help/latest/module/FetchContent.html
+
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+    metalang99
+    URL https://github.com/Hirrolot/metalang99/archive/refs/tags/v1.2.3.tar.gz # v1.2.3
+)
+
+FetchContent_MakeAvailable(metalang99)
+
+target_link_libraries(MyProject metalang99)
+
+# Metalang99 relies on heavy macro machinery. To avoid useleless macro expansion
+# errors, please write this:
+if(CMAKE_C_COMPILER_ID STREQUAL "Clang")
+  target_compile_options(MyProject PRIVATE -fmacro-backtrace-limit=1)
+elseif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+  target_compile_options(MyProject PRIVATE -ftrack-macro-expansion=0)
+endif()
+```
+
+Another approach is downloading Metalang99 as a [Git submodule]. In this case, you can use CMake's [`add_subdirectory`]. Please, avoid directly copy-pasting `metalang99/include` to your project, because it will complicate updating to new versions of Metalang99 in the future.
+
+[Git submodule]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+[`add_subdirectory`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
+
+You can also [precompile headers] that use Metalang99 so that they will not be compiled each time they are included. It is helpful to reduce compilation times, but they are not mandatory.
+
+[precompile headers]: https://en.wikipedia.org/wiki/Precompiled_header
+
+[Tutorial](https://hirrolot.gitbook.io/metalang99/) | [Examples](examples/) | [User documentation](https://metalang99.readthedocs.io/en/latest/)
+
+Happy hacking!
