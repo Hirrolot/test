@@ -1,1 +1,4 @@
-Here, `DYN_LIT(Rectangle, Shape, {5, 7})` creates `Shape` by assigning `Shape.self` to `&(Rectangle){5, 7}` and `Shape.vptr` to the aforementioned `&Rectangle_Shape_impl`. Eventually, you can accept `Shape` as a function parameter and perform dynamic dispatch through the [`VCALL`](#vcall_) macro:
+ - Besides `VCALL`, you also have `VCALL_OBJ`, `VCALL_SUPER`, and `VCALL_SUPER_OBJ`. They all serve a different purpose; for more information, please refer to [their documentation](#vcall_).
+ - In practice, [`DYN`](#DYN) is used more often than [`DYN_LIT`](#DYN_LIT); it just accepts an ordinary pointer instead of an initialiser list, which means that you can `malloc` it beforehand.
+ - Remember that your virtual function can accept literally any parameters, even without `self`, so you can invoke them as `obj.vptr->foo(...)` as well.
+ - If you want to call an interface function on some concrete type, just write `VTABLE(T, Iface).foo(...)`.
