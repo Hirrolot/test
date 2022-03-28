@@ -1,4 +1,1 @@
- - Besides `VCALL`, you also have `VCALL_OBJ`, `VCALL_SUPER`, and `VCALL_SUPER_OBJ`. They all serve a different purpose; for more information, please refer to [their documentation](#vcall_).
- - In practice, [`DYN`](#DYN) is used more often than [`DYN_LIT`](#DYN_LIT); it just accepts an ordinary pointer instead of an initialiser list, which means that you can `malloc` it beforehand.
- - If your virtual function does not accept `self`, you can invoke it as `obj.vptr->foo(...)`.
- - If you want to call an interface function on some concrete type, just write `VTABLE(T, Iface).foo(...)`.
+SmolRTSP is a simple RTSP 1.0 server library tailored for embedded devices, such as IP cameras. It supports both TCP and UDP, allows any payload format, and provides a convenient and flexible API.
