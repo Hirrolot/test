@@ -11,7 +11,7 @@ int handle(MyType val) {
 }
 ```
 
-This code may seem perfect at first glance, but in fact, it is not. The reason is this: `match(val)` boils down to `switch(val.tag)` under the hood, with `val.tag` being an ordinary C enumeration consisting of the variants `Foo` and `Bar`. But what if a caller provides us with neither `Foo` nor `Bar`, but with something like `42` (not a valid variant)? Since `enum` is merely an another way to give integers names, a compiler would not complain on the caller site. However, on the callee site we would have the warning:
+The above code may seem perfect at first glance, but in fact, it is not. The reason is this: `match(val)` boils down to `switch(val.tag)` under the hood, with `val.tag` being an ordinary C enumeration consisting of the variants `Foo` and `Bar`. But what if a caller provides us with neither `Foo` nor `Bar`, but with something like `42` (not a valid variant)? Since `enum` is merely another way to give integers names, a compiler would not complain on the _caller_ site. However, on the _callee_ site, we would have the warning:
 
 ```
 test.c: In function ‘handle’:
