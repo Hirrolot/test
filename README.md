@@ -1,37 +1,46 @@
-This warning happens when you try to return control from within a `match` statement, and your compiler thinks that not all hypothetical variants are handled. For example:
+Datatype99 consists of just one header `datatype99.h` and one dependency [Metalang99]; therefore, you need to add `datatype99` and `metalang99/include` to your include directories.
 
-```c
-datatype(MyType, (Foo), (Bar));
+[Metalang99]: https://github.com/Hirrolot/metalang99
 
-int handle(MyType val) {
-    match(val) {
-        of(Foo) return 5;
-        of(Bar) return 7;
-    }
-}
+If you use CMake, the recommended way is either [`FetchContent`] or [`add_subdirectory`], e.g.:
+
+[`FetchContent`]: https://cmake.org/cmake/help/latest/module/FetchContent.html
+
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+    datatype99
+    URL https://github.com/Hirrolot/datatype99/archive/refs/tags/v1.2.3.tar.gz # v1.2.3
+)
+
+FetchContent_MakeAvailable(datatype99)
+
+target_link_libraries(MyProject datatype99)
+
+# Datatype99 relies on heavy macro machinery. To avoid useleless macro expansion
+# errors, please write this:
+if(CMAKE_C_COMPILER_ID STREQUAL "Clang")
+  target_compile_options(MyProject PRIVATE -fmacro-backtrace-limit=1)
+elseif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+  target_compile_options(MyProject PRIVATE -ftrack-macro-expansion=0)
+endif()
 ```
 
-The above code may seem perfect at first glance, but in fact, it is not. The reason is this: `match(val)` boils down to `switch(val.tag)` under the hood, with `val.tag` being an ordinary C enumeration consisting of the variants `Foo` and `Bar`. But what if a caller provides us with neither `Foo` nor `Bar`, but with something like `42` (not a valid variant)? Since `enum` is merely another way to give integers names, a compiler would not complain on the _caller_ site. However, on the _callee_ site, we would have the warning:
+(By default, `datatype99/CMakeLists.txt` downloads Metalang99 [v1.13.1](https://github.com/Hirrolot/metalang99/releases/tag/v1.13.1) from the GitHub releases; if you want to override this behaviour, you can do so by invoking [`FetchContent_Declare`] earlier.)
 
-```
-test.c: In function ‘handle’:
-test.c:10:1: warning: control reaches end of non-void function [-Wreturn-type]
-   10 | }
-      | ^
-```
+[`FetchContent_Declare`]: https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_declare
 
-The solution is to either panic or return some error-signaling code, like this:
+Another approach is downloading Datatype99 as a [Git submodule]; in this case, you can use CMake's [`add_subdirectory`]. Please, avoid directly copy-pasting `datatype99.h` to your project, because it will complicate updating to new versions of Datatype99 in the future.
 
-```c
-int handle(MyType val) {
-    match(val) {
-        of(Foo) return 5;
-        of(Bar) return 7;
-    }
+[Git submodule]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+[`add_subdirectory`]: https://cmake.org/cmake/help/latest/command/add_subdirectory.html
 
-    // Invalid input (no such variant).
-    return -1;
-}
-```
+A few useful tips:
 
-See [issue #9](https://github.com/Hirrolot/datatype99/issues/9).
+ - To reduce compilation times, you can try [precompiling headers] that rely on Datatype99 so that they will not be compiled each time they are included.
+ - **PLEASE**, do not forget to specify [`-ftrack-macro-expansion=0`] (GCC), [`-fmacro-backtrace-limit=1`] (Clang), or something similar to limit macro expansion backtraces; otherwise, Datatype99 will throw your compiler to the moon.
+
+[precompiling headers]: https://en.wikipedia.org/wiki/Precompiled_header
+[`-ftrack-macro-expansion=0`]: https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html
+[`-fmacro-backtrace-limit=1`]: https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-fmacro-backtrace-limit
