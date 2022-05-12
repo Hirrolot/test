@@ -2,7 +2,7 @@ Datatype99 consists of just one header `datatype99.h` and one dependency [Metala
 
 [Metalang99]: https://github.com/Hirrolot/metalang99
 
-If you use CMake, the recommended way is either [`FetchContent`]:
+If you use CMake, the recommended way is [`FetchContent`]:
 
 [`FetchContent`]: https://cmake.org/cmake/help/latest/module/FetchContent.html
 
